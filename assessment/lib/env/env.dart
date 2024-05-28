@@ -11,7 +11,8 @@ class Prod extends Env {
   @override
   String get baseUrl =>
       //'https://my-json-server.typicode.com/suvarna-mobileApp/DanataAssessment';
-      'https://shubham-gupta-16.github.io/flutter_ecommerce_demo/demo-api';
+      //'https://shubham-gupta-16.github.io/flutter_ecommerce_demo/demo-api';
+  'https://suvarna-mobileapp.github.io/DanataAssessment/assessment/products-api';
 
   //this token is fake as the server doesn't need it, it will be useful when dealing with real apis
   @override
