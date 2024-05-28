@@ -5,25 +5,20 @@ part 'product_entity.g.dart';
 @JsonSerializable()
 class ProductEntity {
   final int id;
-  String slug;
   final String title, description;
   @JsonKey(name: 'featured_image')
   final String image;
   final double price;
-  final String status;
-  @JsonKey(name: "created_at")
-  final String? createdAt;
+  final String rating;
   int quantity;
 
   ProductEntity(
       {required this.id,
-      required this.slug,
       required this.title,
       required this.description,
       required this.image,
       required this.price,
-      required this.status,
-      required this.createdAt,
+        required this.rating,
       this.quantity = 0});
 
   factory ProductEntity.fromJson(Map<String, dynamic> json) =>

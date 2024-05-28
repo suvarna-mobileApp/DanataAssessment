@@ -1,14 +1,16 @@
 import 'package:assessment/common/utils/ui_utils.dart';
+import 'package:assessment/ui/details/details_screen.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../app/routes.dart';
 import '../../../common/widgets/pagination_grid_view.dart';
+import '../../../constants.dart';
 import '../../../di/service_locator.dart';
 import '../../../models/response/product_entity.dart';
-import '../../home/components/home_header.dart';
+import '../../home/components/icon_btn_with_counter.dart';
 import '../../home/components/popular_product.dart';
+import '../../home/components/search_field.dart';
 import '../bloc/product_cubit.dart';
 import '../widgets/item_card.dart';
 
@@ -30,7 +32,64 @@ class _ProductsPageState extends State<ProductsPage> {
             child: Column(
               children: [
                 SizedBox(height: 40),
-                HomeHeader(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                      onChanged: (value) {
+                        context.read<ProductCubit>().search(value);
+                      },
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: kSecondaryColor.withOpacity(0.1),
+                        contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        border: searchOutlineInputBorder,
+                        focusedBorder: searchOutlineInputBorder,
+                        enabledBorder: searchOutlineInputBorder,
+                        hintText: "Search product",
+                        prefixIcon: const Icon(Icons.search),
+                      ),
+                    ),
+                    ),
+                    const SizedBox(width: 5),
+                    BlocBuilder<ProductCubit, ProductState>(
+                      builder: (context, state) {
+                        return IconButton(
+                          icon: badges.Badge(
+                              badgeStyle: const badges.BadgeStyle(
+                                badgeColor: Colors.white,
+                              ),
+                              badgeContent: state is ProductsUpdated
+                                  ? Text(
+                                state.products
+                                    .fold<int>(
+                                    0,
+                                        (sum, product) =>
+                                    sum + (product?.quantity ?? 0))
+                                    .toString(),
+                                style: const TextStyle(fontSize: 12),
+                              )
+                                  : null,
+                              showBadge: state is ProductsUpdated &&
+                                  state.products.fold<int>(
+                                      0,
+                                          (sum, product) =>
+                                      sum + (product?.quantity ?? 0)) >
+                                      0,
+                              child: IconBtnWithCounter(
+                                svgSrc: "assets/icons/Cart Icon.svg",
+                                press: () => Navigator.pushNamed(context, Routes.cartPage),
+                              )),
+                          onPressed: () {
+                            Navigator.pushNamed(context, Routes.cartPage);
+                          },
+                        );
+                      },
+                    ),
+                  ],
+                ),
                 SizedBox(height: 20),
                 PopularProducts(),
                 SizedBox(height: 20),
@@ -101,7 +160,5 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   void initState() {
     super.initState();
-    print('init called');
-    // locator<ProductCubit>().loadsProducts();
   }
 }

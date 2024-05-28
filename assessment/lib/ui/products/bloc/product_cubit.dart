@@ -39,6 +39,17 @@ class ProductCubit extends Cubit<ProductState> {
   //this is a custom made solution for pagination handling
   final paginationManager = PaginationManager<ProductEntity>();
 
+  void search(String query) {
+    if (query.isEmpty) {
+      emit(ProductLoaded(paginationManager.list));
+    } else {
+      final filteredProducts = paginationManager.list
+          .where((product) => product!.title.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+      emit(ProductLoaded(filteredProducts));
+    }
+  }
+
   Future<void> loadsProducts() async {
     if (paginationManager.list.isEmpty) {
       emit(ProductInitial());

@@ -2,8 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../app/routes.dart';
 import '../../../common/widgets/cart_button.dart';
 import '../../../models/response/product_entity.dart';
+import '../../details/details_screen.dart';
 import '../bloc/product_cubit.dart';
 
 class ItemCard extends StatelessWidget {
@@ -36,13 +38,22 @@ class ItemCard extends StatelessWidget {
               children: [
                 SizedBox(
                   height: 150,
-                  child: Center(
-                    child: Image.network(
-                      entity.image,
-                      errorBuilder: (context, o, s) =>
-                          Container(color: Colors.grey[200]),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, Routes.detailPage,
+                      arguments:
+                      ProductDetailsArguments(product: entity)
+                      );
+                    },
+                    child: Center(
+                      child: Image.network(
+                        entity.image,
+                        errorBuilder: (context, error, stackTrace) =>
+                            Container(color: Colors.grey[200]),
+                      ),
                     ),
                   ),
+
                 ),
                 const SizedBox(
                   height: 12,

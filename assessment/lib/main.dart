@@ -16,7 +16,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return FutureBuilder<bool?>(
 
-      /// Set app environment here
         future: getItInit(Env.prod()),
         builder: (context, s) {
           print(s.connectionState.toString());
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
             title: 'Shopping Mall',
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme(context),
-            initialRoute: Routes.productsPage,
+            initialRoute: Routes.navigationPage,
             onGenerateRoute: RouteGenerator.builder,
           )
               : Container(

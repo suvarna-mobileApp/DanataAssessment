@@ -1,11 +1,18 @@
+import 'package:assessment/ui/details/details_screen.dart';
+import 'package:assessment/ui/home/init_screen.dart';
+import 'package:assessment/ui/order_success/success_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../ui/cart/pages/cart_page.dart';
 import '../ui/products/pages/products_page.dart';
+import '../ui/sign_in/sign_in_screen.dart';
 
 class Routes {
-  static const productsPage = '/';
+  static const productsPage = '/product';
+  static const navigationPage = '/';
   static const cartPage = '/cart';
+  static const loginPage = '/login';
+  static const detailPage = '/detail';
+  static const orderpage = '/order';
 }
 
 class RouteGenerator {
@@ -15,6 +22,16 @@ class RouteGenerator {
         return ProductsPage();
       case Routes.cartPage:
         return CartPage();
+      case Routes.cartPage:
+        return CartPage();
+      case Routes.loginPage:
+        return SignInScreen();
+      case Routes.navigationPage:
+        return InitScreen();
+      case Routes.detailPage:
+        return DetailsScreen();
+      case Routes.orderpage:
+        return LoginSuccessScreen();
 
       /* Default Page */
       default:

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../constants.dart';
+
 class CartButton extends StatelessWidget {
   final int quantity;
   final Function(int qty) onAdd;
@@ -44,7 +46,7 @@ class CartButton extends StatelessWidget {
 
   Widget _iconButton(IconData iconData, VoidCallback onPressed) => Material(
         shape: const CircleBorder(),
-        color: Colors.blue[200],
+        color: kPrimaryLightColor,
         child: InkWell(
           splashColor: Colors.white.withOpacity(0.5),
           borderRadius: const BorderRadius.all(Radius.circular(50)),

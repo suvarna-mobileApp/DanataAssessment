@@ -10,6 +10,14 @@ class ProductsUpdated extends ProductState {
   ProductsUpdated(this.products, {this.error});
 }
 
+class ProductLoaded extends ProductState {
+  final List<ProductEntity?> products;
+  ProductLoaded(this.products);
+
+  @override
+  List<Object> get props => [products];
+}
+
 class ProductLoadError extends ProductState {
   final String error;
   ProductLoadError(this.error);

@@ -1,9 +1,9 @@
-import 'package:assessment/ui/cart/cart_screen.dart';
+
+import 'package:assessment/ui/cart/pages/cart_page.dart';
+import 'package:assessment/ui/products/pages/products_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../constants.dart';
-import 'home_screen.dart';
 
 const Color inActiveIconColor = Color(0xFFB6B6B6);
 
@@ -26,8 +26,8 @@ class _InitScreenState extends State<InitScreen> {
   }
 
   final pages = [
-    const HomeScreen(),
-    const CartScreen()
+    const ProductsPage(),
+    const CartPage()
   ];
 
   @override
@@ -60,20 +60,20 @@ class _InitScreenState extends State<InitScreen> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              "assets/icons/Shop Icon.svg",
+              "assets/icons/Cart Icon.svg",
               colorFilter: const ColorFilter.mode(
                 inActiveIconColor,
                 BlendMode.srcIn,
               ),
             ),
             activeIcon: SvgPicture.asset(
-              "assets/icons/Shop Icon.svg",
+              "assets/icons/Cart Icon.svg",
               colorFilter: const ColorFilter.mode(
                 kPrimaryColor,
                 BlendMode.srcIn,
               ),
             ),
-            label: "Home",
+            label: "Cart",
           ),
         ],
       ),

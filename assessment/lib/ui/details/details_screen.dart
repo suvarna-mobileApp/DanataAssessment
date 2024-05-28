@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../models/Product.dart';
-import '../cart/cart_screen.dart';
-import 'components/color_dots.dart';
+import '../../app/routes.dart';
+import '../../di/service_locator.dart';
+import '../../models/response/product_entity.dart';
+import '../products/bloc/product_cubit.dart';
 import 'components/product_description.dart';
-import 'components/product_images.dart';
 import 'components/top_rounded_container.dart';
 
 class DetailsScreen extends StatelessWidget {
   static String routeName = "/details";
 
-  const DetailsScreen({super.key});
+  const DetailsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,50 +74,66 @@ class DetailsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView(
-        children: [
-          ProductImages(product: product),
-          TopRoundedContainer(
-            color: Colors.white,
-            child: Column(
-              children: [
-                ProductDescription(
-                  product: product,
-                  pressOnSeeMore: () {},
+      body: BlocProvider(
+        create: (context) => locator<ProductCubit>(),
+        child: ListView(
+          children: [
+            SizedBox(
+              height: 150,
+              child: Center(
+                child: Image.network(
+                  product.image,
+                  errorBuilder: (context, error, stackTrace) =>
+                      Container(color: Colors.grey[200]),
                 ),
-                TopRoundedContainer(
-                  color: const Color(0xFFF6F7F9),
-                  child: Column(
-                    children: [
-                      ColorDots(product: product),
-                    ],
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
-      ),
+            TopRoundedContainer(
+              color: Colors.white,
+              child: Column(
+                children: [
+                  ProductDescription(
+                    product: product,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ), // Pass the product as needed
+    ),
+
       bottomNavigationBar: TopRoundedContainer(
         color: Colors.white,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, CartScreen.routeName);
-              },
-              child: const Text("Add To Cart"),
-            ),
-          ),
+        child: BlocProvider(
+            create: (context) => locator<ProductCubit>(),
+          child: AddToCartButton(product: product), // Pass the product as needed
         ),
+    ),
+    );
+  }
+}
+
+class AddToCartButton extends StatelessWidget {
+  final ProductEntity product;
+
+  AddToCartButton({required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      child: ElevatedButton(
+        onPressed: () {
+          BlocProvider.of<ProductCubit>(context).addToCart(product);
+          Navigator.pushNamed(context, Routes.cartPage);
+        },
+        child: const Text("Add To Cart"),
       ),
     );
   }
 }
 
 class ProductDetailsArguments {
-  final Product product;
-
+  final ProductEntity product;
   ProductDetailsArguments({required this.product});
 }
