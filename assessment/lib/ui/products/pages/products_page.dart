@@ -38,7 +38,9 @@ class _ProductsPageState extends State<ProductsPage> {
                     Expanded(
                       child: TextFormField(
                       onChanged: (value) {
-                        context.read<ProductCubit>().search(value);
+                        setState(() {
+                          context.read<ProductCubit>().search(value);
+                        });
                       },
                       decoration: InputDecoration(
                         filled: true,
@@ -59,7 +61,7 @@ class _ProductsPageState extends State<ProductsPage> {
                         return IconButton(
                           icon: badges.Badge(
                               badgeStyle: const badges.BadgeStyle(
-                                badgeColor: Colors.white,
+                                badgeColor: kPrimaryColor,
                               ),
                               badgeContent: state is ProductsUpdated
                                   ? Text(
@@ -69,7 +71,7 @@ class _ProductsPageState extends State<ProductsPage> {
                                         (sum, product) =>
                                     sum + (product?.quantity ?? 0))
                                     .toString(),
-                                style: const TextStyle(fontSize: 12),
+                                style: const TextStyle(fontSize: 14,color: Colors.white),
                               )
                                   : null,
                               showBadge: state is ProductsUpdated &&

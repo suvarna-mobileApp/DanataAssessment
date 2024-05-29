@@ -68,7 +68,7 @@ class CartItemCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text("Price"),
-                      Text("\$${entity.price}"),
+                      Text("AED ${entity.price}"),
                     ],
                   ),
                   const SizedBox(

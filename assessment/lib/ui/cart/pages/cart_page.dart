@@ -101,7 +101,7 @@ class CartPage extends StatelessWidget {
             text: "Total:\n",
             children: [
             TextSpan(
-            text: "\$${state.totalPrice}",
+            text: "AED ${state.totalPrice}",
             style: TextStyle(fontSize: 16, color: Colors.black),
             ),
             ],

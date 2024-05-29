@@ -1,6 +1,7 @@
 import 'package:assessment/ui/details/details_screen.dart';
 import 'package:assessment/ui/home/init_screen.dart';
 import 'package:assessment/ui/order_success/success_screen.dart';
+import 'package:assessment/ui/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import '../ui/cart/pages/cart_page.dart';
 import '../ui/products/pages/products_page.dart';
@@ -13,6 +14,7 @@ class Routes {
   static const loginPage = '/login';
   static const detailPage = '/detail';
   static const orderpage = '/order';
+  static const splashpage = '/splash';
 }
 
 class RouteGenerator {
@@ -32,6 +34,8 @@ class RouteGenerator {
         return DetailsScreen();
       case Routes.orderpage:
         return LoginSuccessScreen();
+      case Routes.splashpage:
+        return SplashScreen();
 
       /* Default Page */
       default:

@@ -67,7 +67,7 @@ class ItemCard extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
-                Text("\$${entity.price}"),
+                Text("AED ${entity.price}"),
               ],
             ),
             Positioned(

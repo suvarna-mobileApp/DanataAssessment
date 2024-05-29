@@ -8,7 +8,7 @@
             "id": 1,
             "title": "Apple iPhone 13",
             "description": "Apple iPhone 13 (128GB) - Midnight, display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.06 inches diagonally (actual viewable area is less).",
-            "price": 74900,
+            "price": 7490,
             "featured_image": "https:\/\/i.imgur.com\/43N1Uog.jpeg",
             "status": "1",
             "rating": "4.5"
@@ -17,7 +17,7 @@
             "id": 2,
             "title": "Apple iPhone 12",
             "description": "Apple iPhone 12 (128GB) - Black, The major upgrades over the iPhone 11 include the addition of a Super Retina XDR OLED as opposed to the Liquid Retina LED-backlit LCD IPS panel on the iPhone 11 and XR, 5G support, the introduction of MagSafe, Apple A14 Bionic system on a chip (SoC) and high-dynamic-range video Dolby Vision 4K up to 30 fps.",
-            "price": 59999,
+            "price": 5999,
             "featured_image": "https:\/\/i.imgur.com\/BLi20TR.jpeg",
             "rating": "3.7"
         },
@@ -25,7 +25,7 @@
             "id": 3,
             "title": "Samsung Galaxy Flip3",
             "description": "Samsung Galaxy Z Flip3 5G (Cream, 8GB RAM, 128GB Storage) with No Cost EMI\/Additional Exchange Offers. It include several remarkable features such as: modern design, ease of use, Flex mode, powerful internal features in terms of processor, S-Pen support, 120Hz refresh rate screen, and screen splitting allowing users to multitask.",
-            "price": 84999,
+            "price": 8499,
             "featured_image": "https:\/\/i.imgur.com\/RjncmoP.jpeg",
             "rating": "4.8"
         },
@@ -33,7 +33,7 @@
             "id": 4,
             "title": "iQOO 9 Pro 5G",
             "description": "iQOO 9 Pro 5G (Dark Cruise, 12GB RAM, 256GB Storage) | Snapdragon 8 Gen 1 Mobile Processor | 120W FlashCharge | Extra Rs.4000 Off on Exchange | Upto 12 Months No Cost EMI",
-            "price": 69990,
+            "price": 6999,
             "featured_image": "https:\/\/i.imgur.com\/yU2It6U.jpeg",
             "rating": "3.0"
         },
@@ -41,7 +41,7 @@
             "id": 5,
             "title": "Armor 11T 5G",
             "description": "India Gadgets - Armor 11T 5G Rugged Android 11 Mobile Phone: 8Gb + 256Gb: 48MP Quad Camera with Thermal Imaging Camera: 6.1 HD+ Display: 5200mAh Battery: Waterproof IP68",
-            "price": 57000,
+            "price": 5700,
             "featured_image": "https:\/\/i.imgur.com\/cjQRkhm.jpeg",
             "rating": "4.2"
         },
@@ -49,7 +49,7 @@
             "id": 6,
             "title": "V20 Rugged",
             "description": "India Gadgets - V20 5G Rugged Android 11 Mobile Phone: 8Gb + 256Gb: 64MP + 20MP Night Vison Camera: 6.43 AMOLED FHD+ Display: 6000mAh Battery 33W + 15W Fast Wireless",
-            "price": 48500,
+            "price": 4850,
             "featured_image": "https:\/\/i.imgur.com\/tFzawat.jpeg",
             "rating": "3.5"
         },
@@ -57,7 +57,7 @@
             "id": 7,
             "title": "Power Armor 13",
             "description": "India Gadgets - Power Armor 13 Rugged Android 11 Mobile Phone: 8Gb + 256Gb: 48MP Quad Camera: 6.81 FHD+ Display: Massive 13200mAh Battery: Waterproof IP68 Smartphone",
-            "price": 44500,
+            "price": 4450,
             "featured_image": "https:\/\/i.imgur.com\/4HyB0zv.jpeg",
             "rating": "4.5"
         }
