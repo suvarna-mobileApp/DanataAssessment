@@ -40,13 +40,17 @@ class ProductCubit extends Cubit<ProductState> {
   final paginationManager = PaginationManager<ProductEntity>();
 
   void search(String query) {
-    if (query.isEmpty) {
-      emit(ProductLoaded(paginationManager.list));
-    } else {
-      final filteredProducts = paginationManager.list
-          .where((product) => product!.title.toLowerCase().contains(query.toLowerCase()))
-          .toList();
-      emit(ProductLoaded(filteredProducts));
+    final currentState = state;
+    if (currentState is ProductLoaded) {
+      final products = currentState.products;
+      if (query.isEmpty) {
+        emit(ProductLoaded(products));
+      } else {
+        final filteredProducts = products
+            .where((product) => product.title.toLowerCase().contains(query.toLowerCase()))
+            .toList();
+        emit(ProductLoaded(filteredProducts));
+      }
     }
   }
 

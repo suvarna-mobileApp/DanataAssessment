@@ -36,24 +36,10 @@ class _ProductsPageState extends State<ProductsPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      child: TextFormField(
-                      onChanged: (value) {
-                        setState(() {
-                          context.read<ProductCubit>().search(value);
-                        });
-                      },
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: kSecondaryColor.withOpacity(0.1),
-                        contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                        border: searchOutlineInputBorder,
-                        focusedBorder: searchOutlineInputBorder,
-                        enabledBorder: searchOutlineInputBorder,
-                        hintText: "Search product",
-                        prefixIcon: const Icon(Icons.search),
+                      child: BlocProvider(
+                        create: (context) => locator<ProductCubit>(),
+                        child: Search(), // Pass the product as needed
                       ),
-                    ),
                     ),
                     const SizedBox(width: 5),
                     BlocBuilder<ProductCubit, ProductState>(
@@ -123,6 +109,23 @@ class _ProductsPageState extends State<ProductsPage> {
                           maxCrossAxisExtent: 220,
                         ),
                       );
+                    }else if (state is ProductLoaded) {
+                      return PaginationGridView<ProductEntity>(
+                        padding: const EdgeInsets.all(20),
+                        items: state.products,
+                          itemBuilder: (context, item) {
+                            return ItemCard(entity: item);
+                          },
+                        onScrolledToBottom: () {
+                          BlocProvider.of<ProductCubit>(context).loadsProducts();
+                        },
+                        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                          mainAxisSpacing: 20,
+                          crossAxisSpacing: 20,
+                          mainAxisExtent: 285,
+                          maxCrossAxisExtent: 220,
+                        ),
+                      );
                     } else if (state is ProductLoadError) {
                       return Center(
                         child: Column(
@@ -162,5 +165,30 @@ class _ProductsPageState extends State<ProductsPage> {
   @override
   void initState() {
     super.initState();
+  }
+}
+
+class Search extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      child: TextFormField(
+        onChanged: (value) {
+          BlocProvider.of<ProductCubit>(context).search(value);
+        },
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: kSecondaryColor.withOpacity(0.1),
+          contentPadding:
+          const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          border: searchOutlineInputBorder,
+          focusedBorder: searchOutlineInputBorder,
+          enabledBorder: searchOutlineInputBorder,
+          hintText: "Search product",
+          prefixIcon: const Icon(Icons.search),
+        ),
+      ),
+    );
   }
 }

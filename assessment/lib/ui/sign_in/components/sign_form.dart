@@ -124,7 +124,7 @@ class _SignFormState extends State<SignForm> {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 KeyboardUtil.hideKeyboard(context);
-                Navigator.pushNamed(context, Routes.productsPage);
+                Navigator.pushNamed(context, Routes.navigationPage);
               }
             },
             child: const Text("Continue"),

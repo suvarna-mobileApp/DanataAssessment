@@ -11,7 +11,7 @@ class ProductsUpdated extends ProductState {
 }
 
 class ProductLoaded extends ProductState {
-  final List<ProductEntity?> products;
+  final List<ProductEntity> products;
   ProductLoaded(this.products);
 
   @override
